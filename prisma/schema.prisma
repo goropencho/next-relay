@@ -22,7 +22,7 @@ model AccessToken {
 
 model User {
   id          String        @id @default(uuid())
-  name        String        @db.Text
+  name        String?       @db.Text
   email       String        @unique @db.VarChar(320)
   accessToken AccessToken[]
 }
