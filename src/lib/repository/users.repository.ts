@@ -19,9 +19,7 @@ export class UserRepository {
     return user;
   }
 
-  async findByPredicate(predicate: {}): Promise<
-    User[] | ExtendedUserEntity[] | null
-  > {
+  async findByPredicate(predicate: {}): Promise<User[] | ExtendedUserEntity[]> {
     const user = await prisma.user.findMany({
       where: {
         ...predicate,

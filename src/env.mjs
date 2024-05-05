@@ -4,6 +4,10 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     DATABASE_URL: z.string().url(),
+    MAIL_HOST: z.string(),
+    MAIL_USER: z.string(),
+    MAIL_PASS: z.string(),
+    MAIL_PORT: z.coerce.number(),
   },
 
   /**

@@ -19,8 +19,20 @@ export class AccessTokenRepository {
     return token;
   }
 
+  async findByToken(token: string): Promise<ExtendedAccessTokenEntity | null> {
+    const querytoken = await prisma.accessToken.findUnique({
+      where: {
+        token,
+      },
+      include: {
+        user: true,
+      },
+    });
+    return querytoken;
+  }
+
   async findByPredicate(predicate: {}): Promise<
-    AccessToken[] | ExtendedAccessTokenEntity | null
+    AccessToken[] | ExtendedAccessTokenEntity[]
   > {
     const tokens = await prisma.accessToken.findMany({
       where: {
