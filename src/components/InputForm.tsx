@@ -35,7 +35,12 @@ export default function InputForm() {
         formData.append(key, value);
       }
     });
-    result = await createAccessToken(formData);
+    try {
+      result = await createAccessToken(formData);
+      alert(`Following is the accessToken ${result}.`);
+    } catch (error) {
+      alert("An Unexpected Error from Server");
+    }
   }
   return (
     <>
