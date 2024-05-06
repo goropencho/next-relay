@@ -43,7 +43,7 @@ export default function InputForm() {
     }
   }
   return (
-    <>
+    <main className="max-w-5xl m-auto px-3 my-10 space-y-10">
       <Form {...form}>
         <form
           className="space-y-4"
@@ -68,6 +68,6 @@ export default function InputForm() {
       </Form>
 
       <div>{result && <p>{result}</p>}</div>
-    </>
+    </main>
   );
 }
