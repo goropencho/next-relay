@@ -31,6 +31,8 @@ export class EmailService {
       },
     });
 
+    delete body.token;
+
     try {
       // Craft the email content
       if (user.user?.email) {
@@ -38,7 +40,13 @@ export class EmailService {
           from: "SMTP Service <user@example.org>",
           to: user?.user.email,
           subject: "Your Input Submission",
-          text: `You submitted the following input: ${JSON.stringify(body)}`,
+          text:
+            `You received for your form: \n ` +
+            `${Object.entries(body)
+              .map(([key, val]) => {
+                return `${key} ${val}`;
+              })
+              .join("\n")}`,
         };
 
         // Send the email
